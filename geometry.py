@@ -10,6 +10,17 @@ class Rectangle:
         return self.a * self.b
 
 
+class Rectangle2:
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def __str__(self):
+        return f"Rectangle({self.x}, {self.y}, {self.width}, {self.height})"
+
+
 class Square:
     def __init__(self, a):
         self.a = a
@@ -24,3 +35,8 @@ class Circle:
 
     def get_area_circle(self):
         return math.pi * self.r ** 2
+
+
+if __name__ == "__main__":
+    rect1 = Rectangle2(5, 10, 50, 100)
+    print(rect1)
