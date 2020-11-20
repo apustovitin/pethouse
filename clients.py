@@ -1,24 +1,33 @@
-class Client:
+class Person:
     def __init__(self, first_name="", last_name=""):
         self.first_name = first_name
         self.last_name = last_name
+
+    def set_first_name(self, first_name):
+        if isinstance(first_name, str):
+            self.first_name = first_name
+
+    def set_last_name(self, last_name):
+        if isinstance(last_name, str):
+            self.last_name = last_name
 
     def full_name(self):
         return self.first_name + " " + self.last_name
 
 
-class ClientBalance(Client):
+class ClientBalance(Person):
     def __init__(self, balance=0, unit="руб."):
         self.balance = balance
         self.unit = unit
 
+    def set_balance(self, balance):
+        if balance >= 0 and isinstance(balance, int):
+            self.balance = balance
+
     def init_from_dict(self, dict):
-        if isinstance(dict.get("first_name"), str):
-            self.first_name = dict.get("first_name")
-        if isinstance(dict.get("last_name"), str):
-            self.last_name = dict.get("last_name")
-        if dict.get("balance") >= 0 and isinstance(dict.get("balance"), int):
-            self.balance = dict.get("balance")
+        self.set_first_name(dict.get("first_name"))
+        self.set_last_name(dict.get("last_name"))
+        self.set_balance(dict.get("balance"))
 
     def balance_at_unit(self):
         return str(self.balance) + " " + self.unit
